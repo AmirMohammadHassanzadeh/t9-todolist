@@ -6,7 +6,8 @@ let list = document.querySelector(".list")
  //for geting text as local storage when user refreshing
  list.innerHTML = localStorage.getItem('list_items')
 // make list & add item's
-btn.addEventListener("click", function (revent) {
+ function clicks (event) {
+    if(event.type === "click" || event.key === "Enter"){
     var val1 = inp.value
     if (val1.trim() != "") {
         let item = document.createElement("li")
@@ -38,8 +39,9 @@ btn.addEventListener("click", function (revent) {
 
     }
 }
+}
+
  
-)
 //remove work's
 function remover(event) {
     let target1 = event.target.parentElement.parentElement
@@ -47,7 +49,7 @@ function remover(event) {
         // for updating local when user change
         localStorage.setItem('list_items' , list.innerHTML )
 }
-// chek box 
+// chek box's 
 function todo_chek(event) {
     let war_alert = event.target.parentElement.parentElement.parentElement.parentElement
     war_alert.classList.remove('alert-info')
